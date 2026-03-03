@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectionStrategy, input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy, input, output } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
 import { Photo } from '../../models/photo.model';
 
@@ -11,7 +11,10 @@ import { Photo } from '../../models/photo.model';
       [ngSrc]="photo().display_url"
       fill
       [alt]="'Photo by ' + photo().author"
-      class="photo-img">
+      class="photo-img"
+      [priority]="isPriority"
+      (click)="handleClick()"
+      >
   </div>
 
   <div class="card-footer">
@@ -23,7 +26,14 @@ changeDetection: ChangeDetectionStrategy.OnPush
 
 })
 export class PhotoCardComponent {
- readonly photo= input.required<Photo>();
+ photo = input.required<Photo>();
+  isPriority = input(false);
 
+  // New Output API (No more EventEmitter required!)
+  photoSelected = output<Photo>();
 
+  handleClick() {
+    // We emit the value of the signal
+    this.photoSelected.emit(this.photo());
+  }
 }

@@ -4,6 +4,8 @@ import { Photo } from '../../models/photo.model';
 import { PhotoCardComponent } from "./photo-card";
 import { PhotoSkeletonComponent } from "./photo-skeleton";
 import { MatGridListModule} from '@angular/material/grid-list';
+import { FavouriteService } from '../../core/favourite.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-photo-library',
   imports: [PhotoCardComponent, PhotoSkeletonComponent,MatGridListModule],
@@ -12,11 +14,17 @@ import { MatGridListModule} from '@angular/material/grid-list';
   <div class="library-container">
   <mat-grid-list cols="3" rowHeight="1:1" gutterSize="16px">
 
-    @for (photo of photos(); track photo.id) {
-      <mat-grid-tile>
-        <app-photo-card [photo]="photo"></app-photo-card>
-      </mat-grid-tile>
-    }
+
+  @for (photo of photos(); track photo.id; let i = $index) {
+  <mat-grid-tile>
+    <app-photo-card
+      [photo]="photo"
+      [isPriority]="i < 6"
+      (photoSelected)="onPhotoSelected($event)">
+    </app-photo-card>
+  </mat-grid-tile>
+}
+
 
     @if (isLoading()) {
       @for (i of [1,2,3,4,5,6]; track i) {
@@ -25,9 +33,6 @@ import { MatGridListModule} from '@angular/material/grid-list';
         </mat-grid-tile>
       }
     }
-    @else {
-      <span>No more loading</span>
-    }
   </mat-grid-list>
 
   <div #scrollAnchor class="scroll-sensor">Loading ...</div>
@@ -35,7 +40,7 @@ import { MatGridListModule} from '@angular/material/grid-list';
 
   <div #scrollAnchor class="scroll-anchor">
     @if (!isLoading() && photos().length > 0) {
-      <span class="pull-up-text">Loading...</span>
+      <span class="pull-up-text">Complete Loading</span>
     }
   </div>
 </div>`,
@@ -49,6 +54,8 @@ import { MatGridListModule} from '@angular/material/grid-list';
 })
 export class PhotoLibraryComponent {
   private photoService = inject(PhotoService);
+  private favouriteService = inject(FavouriteService);
+  private router = inject(Router);
 
   photos = signal<Photo[]>([]);
   isLoading = signal(false);
@@ -86,8 +93,10 @@ export class PhotoLibraryComponent {
     });
   }
 
-  onPhotoClick(photo:Photo){
-    console.log(photo.id);
+  onPhotoSelected(photoSelected:Photo){
+    console.log(photoSelected);
+    this.favouriteService.addFavouritePhoto(photoSelected);
+    this.router.navigate(['photo',photoSelected.id]);
   }
 
   ngOnDestroy() {
