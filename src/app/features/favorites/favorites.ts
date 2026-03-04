@@ -1,4 +1,4 @@
-import { Component,computed,inject,input, OnInit } from '@angular/core';
+import { Component,computed,inject} from '@angular/core';
 import { FavouriteService } from '../../core/favourite.service';
 import { PhotoCardComponent } from "../photos/photo-card";
 import { MatGridListModule } from "@angular/material/grid-list";

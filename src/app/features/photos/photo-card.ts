@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectionStrategy, input, output } from '@angular/core';
+import { Component, ChangeDetectionStrategy, input, output } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
 import { Photo } from '../../models/photo.model';
 

@@ -2,7 +2,6 @@ import { Component, ElementRef, inject, signal, ViewChild } from '@angular/core'
 import { PhotoService } from '../../core/photo.service';
 import { Photo } from '../../models/photo.model';
 import { PhotoCardComponent } from "./photo-card";
-
 import { MatGridListModule} from '@angular/material/grid-list';
 import { FavouriteService } from '../../core/favourite.service';
 import { Router } from '@angular/router';

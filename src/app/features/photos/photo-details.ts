@@ -1,4 +1,4 @@
-import { Component,computed,inject,input, OnInit } from '@angular/core';
+import { Component,computed,inject,input} from '@angular/core';
 import { FavouriteService } from '../../core/favourite.service';
 import { PhotoCardComponent } from "./photo-card";
 import { Router } from '@angular/router';
