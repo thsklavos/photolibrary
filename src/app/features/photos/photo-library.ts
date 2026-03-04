@@ -6,10 +6,11 @@ import { PhotoCardComponent } from "./photo-card";
 import { MatGridListModule} from '@angular/material/grid-list';
 import { FavouriteService } from '../../core/favourite.service';
 import { Router } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-photo-library',
-  imports: [PhotoCardComponent, MatGridListModule],
+  imports: [PhotoCardComponent, MatGridListModule, MatButtonModule],
   template: `<div class="photo-library">
     <div class="library-container">
   <div class="library-container">
@@ -24,7 +25,7 @@ import { Router } from '@angular/router';
     </mat-grid-tile>
   }
   </mat-grid-list>
-  <div #scrollAnchor class="scroll-sensor">Loading ...</div>
+  <div #scrollAnchor class="scroll-sensor"><button matButton="outlined">Loading</button></div>
 </div>
   <div #scrollAnchor class="scroll-anchor">
     @if (!isLoading() && photos().length > 0) {

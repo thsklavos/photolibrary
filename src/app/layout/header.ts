@@ -7,13 +7,16 @@ import { RouterLink } from '@angular/router';
   selector: 'app-header',
   imports: [RouterLink, MatToolbarModule, MatButtonModule, MatIconModule],
   template: `
-    <mat-toolbar color="primary">
+    <mat-toolbar color="primary" class="header-toolbar">
       <span>Photo Library</span>
       <span class="spacer"></span>
-      <a mat-button routerLink="/">Home</a>
-      <a mat-button routerLink="/favorites">Favorites</a>
+      <a matButton="filled" routerLink="/">Home</a>
+      <a matButton="filled" routerLink="/favorites">Favorites</a>
     </mat-toolbar>
-  `,})
+  `,
+  styles: `.header-toolbar {display: flex; justify-content: center; align-items: center;}
+  .mdc-button{margin: 0 15px;}`
+})
 export class HeaderComponent {
 
 }
