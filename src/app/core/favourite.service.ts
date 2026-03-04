@@ -38,9 +38,11 @@ export class FavouriteService {
   removeFavouritePhoto(photoId: string | undefined): void {
     const currentFavouritePhotos = this.getFavouritePhotos();
     const filtered = currentFavouritePhotos.filter(p => p.id !== photoId);
-    this.saveFavouritePhotos(filtered);
-    if(currentFavouritePhotos.length===0){
+    // if removing last item, clear storage instead of writing an empty array
+    if (filtered.length === 0) {
       this.clearFavourites();
+    } else {
+      this.saveFavouritePhotos(filtered);
     }
   }
 
