@@ -1,6 +1,19 @@
-<header>
+<div class="app-container">
   <app-header></app-header>
-</header>
-<main class="main-content">
-  <router-outlet></router-outlet>
-</main>
+  <main class="main-content">
+    <router-outlet></router-outlet>
+  </main>
+  <footer
+    class="text-center text-secondary"
+    style="
+      padding: 24px 16px;
+      font-size: 12px;
+      border-top: 1px solid var(--pl-border);
+      max-width: var(--pl-max-width);
+      margin: 0 auto;
+    "
+  >
+    PhotoLibrary • Powered by
+    <a href="https://picsum.photos" target="_blank" rel="noopener">Picsum Photos</a>
+  </footer>
+</div>

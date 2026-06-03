@@ -1,59 +1,59 @@
-# Photolibrary
+# PhotoLibrary • Expert Edition
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.4.
+A polished, production-quality photo browsing experience built with **Angular 21** (standalone components, signals, modern control flow).
 
-## Development server
+Browse thousands of beautiful photos from [Picsum Photos](https://picsum.photos), instantly favorite them, search & sort, view rich details, and download originals. Fully reactive, accessible, responsive, and beautifully styled.
 
-To start a local development server, run:
+## Key Features (Expert Level)
 
-```bash
-ng serve
-```
+- **Infinite scroll + Load More** with IntersectionObserver + graceful fallback
+- **Client-side Search & Sort** (author, newest/oldest, A–Z) — instantly filters loaded photos
+- **Favorite System** — heart toggle on every card (library + favorites page). Persisted via localStorage + fully reactive `signals`
+- **Smart Caching** — PhotoService maintains in-memory cache so `/photo/:id` works for any previously seen (or directly linked) photo
+- **Details View** — large hero image, metadata (dimensions, aspect), one-click download (full-res), copy shareable link, favorite toggle + toast feedback
+- **Favorites Management** — dedicated page, local filter, remove via heart or bulk clear
+- **Professional UI** — responsive CSS Grid, skeleton loaders, empty/error states, smooth hovers, Material components + custom design system
+- **Modern Angular** — signals everywhere, OnPush, outputs, computed derived state, standalone, typed DI, effects for side-effects
+- **Great DX** — 19 passing unit tests, meaningful error handling, loading states
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Quick Start
 
 ```bash
-ng generate --help
+npm install
+npm start          # http://localhost:4200
 ```
 
-## Building
+Other scripts:
 
-To build the project run:
+- `npm run build` — production build (dist/)
+- `npm test` — Vitest unit tests (watch mode) or `npm test -- --run`
 
-```bash
-ng build
-```
+## Architecture Highlights
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+- `PhotoService`: HTTP + normalization + cache (signals) + error handling + single-photo fetch
+- `FavoriteService`: signal-backed store with auto localStorage effect + computed count/empty
+- Reusable `<app-photo-card>` with built-in favorite button (no parent glue needed)
+- Routes: `/` (library with toolbar), `/favorites`, `/photo/:id`
+- Global styles + CSS vars for easy theming (prepared for dark mode)
 
-## Running unit tests
+## Screenshots / Demo
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+Run locally — the experience speaks for itself:
+- Search while scrolling new pages
+- Heart any photo from grid or details
+- Deep link a photo id directly
+- Favorites badge updates live in header
 
-```bash
-ng test
-```
+## Future Polish Ideas (optional extensions)
 
-## Running end-to-end tests
+- Virtual scrolling for 1000+ photos
+- Custom Material theme + dark mode toggle
+- Service worker / PWA offline favorites
+- Real backend (upload / user accounts)
+- MatDialog quick preview instead of route for some flows
 
-For end-to-end (e2e) testing, run:
+Built as a showcase of expert Angular practices (2026).
 
-```bash
-ng e2e
-```
+---
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+This project was originally generated with Angular CLI v21.

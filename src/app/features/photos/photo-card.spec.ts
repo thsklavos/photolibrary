@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { PhotoCardComponent } from './photo-card';
 import { Photo } from '../../models/photo.model';
+import { FavoriteService } from '../../core/favorite.service';
 
 describe('PhotoCardComponent', () => {
     let component: PhotoCardComponent;
@@ -10,12 +11,16 @@ describe('PhotoCardComponent', () => {
         id: '123',
         author: 'Test Author',
         display_url: 'test.jpg',
-        download_url: 'test-full.jpg'
+        download_url: 'test-full.jpg',
+        width: 400,
+        height: 300,
+        url: ''
     };
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({
-            imports: [PhotoCardComponent] // Standalone components go in imports
+            imports: [PhotoCardComponent],
+            providers: [{ provide: FavoriteService, useValue: { isFavorite: () => false, toggleFavorite: () => true } }]
         }).compileComponents();
 
         fixture = TestBed.createComponent(PhotoCardComponent);
