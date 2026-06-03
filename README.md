@@ -1,10 +1,10 @@
-# PhotoLibrary • Expert Edition
+# PhotoLibrary
 
 A polished, production-quality photo browsing experience built with **Angular 21** (standalone components, signals, modern control flow).
 
 Browse thousands of beautiful photos from [Picsum Photos](https://picsum.photos), instantly favorite them, search & sort, view rich details, and download originals. Fully reactive, accessible, responsive, and beautifully styled.
 
-## Key Features (Expert Level)
+## Key Features
 
 - **Infinite scroll + Load More** with IntersectionObserver + graceful fallback
 - **Client-side Search & Sort** (author, newest/oldest, A–Z) — instantly filters loaded photos
@@ -39,6 +39,7 @@ Other scripts:
 ## Screenshots / Demo
 
 Run locally — the experience speaks for itself:
+
 - Search while scrolling new pages
 - Heart any photo from grid or details
 - Deep link a photo id directly
