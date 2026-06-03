@@ -53,7 +53,7 @@ Run locally — the experience speaks for itself:
 - Real backend (upload / user accounts)
 - MatDialog quick preview instead of route for some flows
 
-Built as a showcase of expert Angular practices (2026).
+Built as a showcase of modern Angular practices (2026).
 
 ---
 
